@@ -1,32 +1,35 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import * as actions from '../../store/actions';
 
 class Dashboard extends Component {
 
-  state = {
-    icons: []
-  }
-
   componentDidMount() {
-    axios.get('http://localhost:3000/products')
-      .then(res => {
-        console.log('Fetching_data', res.data);
-        this.setState({
-          icons: res.data
-        })
-      });
+    this.props.onGetIcons();
   }
-
 
   render () {
+    const { icons } = this.props;
     return (
       <div>
         <ul>
-        {this.state.icons.map(icon => <li key={icon.id}>{icon.face}</li> )}
+        {icons.map(icon => <li key={icon.id}>{icon.face}</li> )}
         </ul>
       </div>
     )
   }
 }
 
-export default Dashboard
+const mapStateToProps = state => {
+  return {
+    icons: state.icons.icons
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onGetIcons: () => dispatch(actions.getIcons())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
