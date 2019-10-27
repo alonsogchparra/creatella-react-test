@@ -1,0 +1,1 @@
+export const FETCH_ICONS = 'FETCH_ICONS'
