@@ -1,6 +1,6 @@
 import React from 'react';
 
-const iconItem = ({icon, currency}) => {
+const iconItem = ({ icon, currency }) => {
 
   return (
     <div className="col s12 m4">
@@ -11,6 +11,7 @@ const iconItem = ({icon, currency}) => {
         <div className="card-content">
           <p><strong>Size: </strong>{icon.size} px</p>
           <p><strong>Price: </strong>${currency}</p>
+          <p><strong>Date: </strong>{icon.date}</p>
           <div className="card-action">
             <button className="waves-effect waves-light btn-small">Add Cart</button>
           </div>
