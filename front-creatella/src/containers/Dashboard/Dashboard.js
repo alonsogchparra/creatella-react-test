@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Header from '../../components/Header/Header';
+import IconList from '../../components/IconsList/IconList';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions';
 
@@ -12,9 +14,10 @@ class Dashboard extends Component {
     const { icons } = this.props;
     return (
       <div>
-        <ul>
-        {icons.map(icon => <li key={icon.id}>{icon.face}</li> )}
-        </ul>
+        <Header />
+        <div className="container">
+          <IconList icons={icons} />
+        </div>
       </div>
     )
   }
