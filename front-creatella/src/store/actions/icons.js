@@ -106,3 +106,10 @@ export const isLoading = () => {
     isLoading: true
   }
 }
+
+export const addIcons = (icons) => {
+  return {
+    type: actionTypes.ADDING_ICONS,
+    icons
+  }
+}
