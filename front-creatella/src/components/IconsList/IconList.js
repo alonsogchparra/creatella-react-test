@@ -2,7 +2,7 @@ import React from 'react';
 import Spinner from '../../components/Spinner/Spinner';
 import IconItem from './IconItem/IconItem';
 
-const iconList = ({ icons }) => {
+const iconList = ({ icons, M }) => {
 
   const displayContent = icons.length === 0 ?
     <Spinner /> : (
@@ -15,6 +15,7 @@ const iconList = ({ icons }) => {
               key={icon.id}
               icon={icon}
               currency={currency}
+              M={M}
             />
           )
         })}
