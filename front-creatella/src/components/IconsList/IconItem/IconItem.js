@@ -11,7 +11,7 @@ const iconItem = ({ icon, currency }) => {
         <div className="card-content">
           <p><strong>Size: </strong>{icon.size} px</p>
           <p><strong>Price: </strong>${currency}</p>
-          <p><strong>Date: </strong>{icon.date}</p>
+          <p><strong>Date: </strong>{new Date(icon.date).toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' })}</p>
           <div className="card-action">
             <button className="waves-effect waves-light btn-small">Add Cart</button>
           </div>
