@@ -11,6 +11,7 @@ const initState = {
   dateSelected: false,
   idSelected: false,
   isLoading: true,
+  iconsAdded: [],
 };
 
 const reducer = (state = initState, action) => {
@@ -76,6 +77,16 @@ const reducer = (state = initState, action) => {
       return {
         ...state,
         isLoading: action.isLoading
+      }
+    }
+
+    case actionTypes.ADDING_ICONS: {
+      return {
+        ...state,
+        iconsAdded: state.iconsAdded.concat(action.icons)
+          .filter((icon, index, self) => index === self.findIndex((t) => (
+          t.id === icon.id && t.face === icon.face
+        )))
       }
     }
 
