@@ -10,6 +10,7 @@ const initState = {
   sizeSelected: false,
   dateSelected: false,
   idSelected: false,
+  isLoading: true,
 };
 
 const reducer = (state = initState, action) => {
@@ -28,6 +29,7 @@ const reducer = (state = initState, action) => {
         priceSelected: false,
         sizeSelected: false,
         dateSelected: false,
+        isLoading: action.isLoading
       }
 
     case actionTypes.SORTED_BY_PRICE:
@@ -36,7 +38,8 @@ const reducer = (state = initState, action) => {
         priceSelected: action.priceSelected,
         sizeSelected: false,
         dateSelected: false,
-        idSelected: false
+        idSelected: false,
+        isLoading: action.isLoading
       }
 
     case actionTypes.SORTED_BY_SIZE:
@@ -45,7 +48,8 @@ const reducer = (state = initState, action) => {
         sizeSelected: action.sizeSelected,
         priceSelected: false,
         dateSelected: false,
-        idSelected: false
+        idSelected: false,
+        isLoading: action.isLoading
       }
 
 
@@ -55,7 +59,8 @@ const reducer = (state = initState, action) => {
         dateSelected: action.dateSelected,
         priceSelected: false,
         sizeSelected: false,
-        idSelected: false
+        idSelected: false,
+        isLoading: action.isLoading
       }
     case actionTypes.SORTED_BY_ID:
       return {
@@ -63,8 +68,16 @@ const reducer = (state = initState, action) => {
         dateSelected: false,
         priceSelected: false,
         sizeSelected: false,
-        idSelected: action.idSelected
+        idSelected: action.idSelected,
+        isLoading: action.isLoading
       }
+
+    case actionTypes.LOADING_ICONS: {
+      return {
+        ...state,
+        isLoading: action.isLoading
+      }
+    }
 
     default:
       return state;
