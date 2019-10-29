@@ -3,13 +3,23 @@ import Header from '../../components/Header/Header';
 import IconList from '../../components/IconsList/IconList';
 import SortPanel from '../../components/SortPanel/SortPanel';
 import Spinner from '../../components/Spinner/Spinner';
+import ShoppingButton from '../../components/ShoppingButton/ShoppingButton';
+import ModalCart from '../../components/ModalCart/ModalCart';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions';
 
 class Dashboard extends Component {
 
+  constructor(props) {
+    super(props);
+    this.M = window.M
+  }
+
   componentDidMount() {
     this.props.onGetIcons();
+
+    const elems1 = document.querySelectorAll(".modal");
+    this.M.Modal.init(elems1);
   }
 
   sortedByIdHandler = () => {
@@ -38,11 +48,13 @@ class Dashboard extends Component {
       sizeSelected,
       idSelected,
       dateSelected,
-      isLoading
+      isLoading,
+      iconsAdded
      } = this.props;
-
+     console.log('IconsAdded', iconsAdded );
     return (
       <div>
+
         <Header />
         <div className="container">
           <SortPanel
@@ -52,11 +64,15 @@ class Dashboard extends Component {
             sortById={this.sortedByIdHandler}
           />
           { isLoading && <Spinner /> }
-          { (!isLoading && idSelected) && <IconList icons={sortById} />}
-          { (!isLoading && priceSelected) && <IconList icons={sortByPrice} /> }
-          { (!isLoading && sizeSelected) && <IconList icons={sortBySize} /> }
-          { (!isLoading && dateSelected) && <IconList icons={sortByDate} /> }
+          { (!isLoading && idSelected) && <IconList icons={sortById} M={this.M} />}
+          { (!isLoading && priceSelected) && <IconList icons={sortByPrice} M={this.M} /> }
+          { (!isLoading && sizeSelected) && <IconList icons={sortBySize} M={this.M} /> }
+          { (!isLoading && dateSelected) && <IconList icons={sortByDate} M={this.M} /> }
         </div>
+
+        <ShoppingButton />
+        <ModalCart icons={iconsAdded} />
+
       </div>
     )
   }
@@ -73,7 +89,8 @@ const mapStateToProps = state => {
     sizeSelected: state.icons.sizeSelected,
     dateSelected: state.icons.dateSelected,
     idSelected: state.icons.idSelected,
-    isLoading: state.icons.isLoading
+    isLoading: state.icons.isLoading,
+    iconsAdded: state.icons.iconsAdded,
   }
 }
 
