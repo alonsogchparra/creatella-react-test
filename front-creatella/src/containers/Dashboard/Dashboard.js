@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from '../../components/Header/Header';
 import IconList from '../../components/IconsList/IconList';
 import SortPanel from '../../components/SortPanel/SortPanel';
+import Spinner from '../../components/Spinner/Spinner';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions';
 
@@ -29,7 +30,6 @@ class Dashboard extends Component {
 
   render () {
     const {
-      icons,
       sortByPrice,
       sortBySize,
       sortByDate,
@@ -37,7 +37,8 @@ class Dashboard extends Component {
       priceSelected,
       sizeSelected,
       idSelected,
-      dateSelected
+      dateSelected,
+      isLoading
      } = this.props;
 
     return (
@@ -50,10 +51,11 @@ class Dashboard extends Component {
             sortByDate={this.sortedByDateHandler}
             sortById={this.sortedByIdHandler}
           />
-          { idSelected && <IconList icons={sortById} />}
-          { priceSelected && <IconList icons={sortByPrice} /> }
-          { sizeSelected && <IconList icons={sortBySize} /> }
-          { dateSelected && <IconList icons={sortByDate} /> }
+          { isLoading && <Spinner /> }
+          { (!isLoading && idSelected) && <IconList icons={sortById} />}
+          { (!isLoading && priceSelected) && <IconList icons={sortByPrice} /> }
+          { (!isLoading && sizeSelected) && <IconList icons={sortBySize} /> }
+          { (!isLoading && dateSelected) && <IconList icons={sortByDate} /> }
         </div>
       </div>
     )
@@ -70,17 +72,18 @@ const mapStateToProps = state => {
     priceSelected: state.icons.priceSelected,
     sizeSelected: state.icons.sizeSelected,
     dateSelected: state.icons.dateSelected,
-    idSelected: state.icons.idSelected
+    idSelected: state.icons.idSelected,
+    isLoading: state.icons.isLoading
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     onGetIcons: () => dispatch(actions.getIcons()),
-    onSortByPrice: () => dispatch(actions.sortedByPrice()),
-    onSortBySize: () => dispatch(actions.sortedBySize()),
-    onSortById: () => dispatch(actions.sortedById()),
-    onSortByDate: () => dispatch(actions.sortedByDate())
+    onSortByPrice: () => dispatch(actions.getSortByPrice()),
+    onSortBySize: () => dispatch(actions.getSortBySize()),
+    onSortById: () => dispatch(actions.getSortById()),
+    onSortByDate: () => dispatch(actions.getSortByDate())
   }
 }
 
