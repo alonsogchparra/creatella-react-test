@@ -1,6 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../../../store/actions';
 
-const iconItem = ({ icon, currency }) => {
+
+const iconItem = ({ icon, currency, M, onAddIconsCart }) => {
+
+ const addCartHandler = () => {
+    console.log('Added to Cart');
+    M.toast({html:`Face: ${icon.face} added Cart`});
+    onAddIconsCart(icon);
+  }
 
   return (
     <div className="col s12 m4">
@@ -13,7 +22,9 @@ const iconItem = ({ icon, currency }) => {
           <p><strong>Price: </strong>${currency}</p>
           <p><strong>Date: </strong>{new Date(icon.date).toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' })}</p>
           <div className="card-action">
-            <button className="waves-effect waves-light btn-small">Add Cart</button>
+            <button className="waves-effect waves-light btn-small" onClick={addCartHandler}>
+              Add Cart <i className="material-icons right">add_shopping_cart</i>
+            </button>
           </div>
         </div>
       </div>
@@ -21,4 +32,10 @@ const iconItem = ({ icon, currency }) => {
   );
 }
 
-export default iconItem;
+const mapDispatchToProps = dispatch => {
+  return {
+    onAddIconsCart: (icons) => dispatch(actions.addIcons(icons))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(iconItem);
