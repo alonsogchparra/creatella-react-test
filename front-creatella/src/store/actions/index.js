@@ -1,8 +1,9 @@
 export {
   fetchIcons,
   getIcons,
-  sortedByPrice,
-  sortedBySize,
-  sortedByDate,
-  sortedById
+  isLoading,
+  getSortByPrice,
+  getSortBySize,
+  getSortByDate,
+  getSortById
 } from './icons'
