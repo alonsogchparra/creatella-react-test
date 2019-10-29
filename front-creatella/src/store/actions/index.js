@@ -1,1 +1,8 @@
-export { fetchIcons, getIcons } from './icons'
+export {
+  fetchIcons,
+  getIcons,
+  sortedByPrice,
+  sortedBySize,
+  sortedByDate,
+  sortedById
+} from './icons'
