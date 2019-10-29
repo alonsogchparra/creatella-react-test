@@ -2,7 +2,7 @@ import React from 'react';
 
 const sortPanel = ({ sortByPrice, sortBySize, sortByDate, sortById }) => {
   return (
-    <div className="container">
+    <div>
       <div className="row">
         <div className="center"><h4>Sort by:</h4></div>
         <div className="col s3 m3">
