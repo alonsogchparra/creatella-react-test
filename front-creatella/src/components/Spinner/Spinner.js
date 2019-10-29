@@ -4,7 +4,7 @@ import './Spinner.css';
 const spinner = (props) => (
   <div className="container_spinner">
     <div className="preloader-wrapper big active">
-      <div className="spinner-layer spinner-blue">
+      <div className="spinner-layer spinner-blue-only">
         <div className="circle-clipper left">
           <div className="circle"></div>
         </div><div className="gap-patch">
