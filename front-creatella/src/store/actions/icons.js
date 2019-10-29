@@ -18,3 +18,31 @@ export const fetchIcons = (icons) => {
     icons
   }
 }
+
+export const sortedByPrice = () => {
+  return {
+    type: actionTypes.SORTED_BY_PRICE,
+    priceSelected: true
+  }
+}
+
+export const sortedBySize = () => {
+  return {
+    type: actionTypes.SORTED_BY_SIZE,
+    sizeSelected: true
+  }
+}
+
+export const sortedByDate = () => {
+  return {
+    type: actionTypes.SORTED_BY_DATE,
+    dateSelected: true
+  }
+}
+
+export const sortedById = () => {
+  return {
+    type: actionTypes.SORTED_BY_ID,
+    idSelected: true
+  }
+}
