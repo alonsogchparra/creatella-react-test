@@ -1,3 +1,23 @@
+# Creatella React Test
+
+## How to run the entire project (Frontend - Backend)
+
+- First jump to your terminal and install all the dependencies neccesary for backend and frontend
+  - The backend's dependencies installation you can do it from here `/creatella-react-test/` using command `npm install`
+  - The frontend's dependencies installation you can do it from here `/creatella-react-test/front-creatella/` using command `yarn install` (You could work with npm install too, if you prefer that way of course).
+- Once you got all the dependencies installed run the command ```npm start``` from `/creatella-react-test/` this will run the backend part of the project. Keep running this part of the project.
+- Open another tab on your terminal, this time you have to be here `/creatella-react-test/front-creatella/` and run command ```yarn start```. Probably when you run this command(keeping the backend running of course) you would got this message
+```
+? Something is already running on port 3000. Probably:
+…
+Would you like to run the app on another port instead? (Y/n)
+
+```
+And this case press the button **Y** that way your backend project will run on **port:3000** and the frontend will do it on **port:3001**. This is because we need frontend and backend work together. Backend will handle the ascii faces and advertisment and frontend will get the info from backend.
+
+The most update branchs on this project are **master** and **develop**. Be on these branchs if you want to check the entire project. Feel free to check the others branchs I will let them open if you want to search something.
+
+
 Products Grid
 ====
 
