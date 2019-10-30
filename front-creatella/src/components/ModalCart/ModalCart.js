@@ -1,7 +1,10 @@
 import React from 'react';
 import IconsAddedModal from '../IconsAddedModal/IconsAddedModal';
+import { connect } from 'react-redux'
+import * as actions from '../../store/actions';
 
-const modalCart = ({ icons }) => {
+
+const modalCart = ({ icons, onRemoveAllIcons }) => {
   return (
     <div id="modal1" className="modal modal-fixed-footer">
       <div className="modal-content">
@@ -10,10 +13,30 @@ const modalCart = ({ icons }) => {
         <IconsAddedModal icons={icons} />
       </div>
       <div className="modal-footer">
-        <button className={ icons.length === 0 ?  "modal-close waves-effect waves-green btn-flat disabled" : "modal-close waves-effect waves-green btn-flat"}>Agree</button>
+        <button
+          className={ icons.length === 0 ?
+            "modal-close waves-effect waves-green btn-flat disabled" :
+            "modal-close waves-effect waves-green btn-flat"}
+        >
+        Buy
+        </button>
+        <button
+          className={ icons.length === 0 ?
+            "waves-effect waves-green btn-flat disabled" :
+            "waves-effect waves-green btn-flat"}
+          onClick={() => onRemoveAllIcons()}
+        >
+        Remove All
+        </button>
       </div>
     </div>
   )
 }
 
-export default modalCart;
+const mapDispatchToProps =  dispatch => {
+  return {
+    onRemoveAllIcons: () => dispatch(actions.removeAllIcons())
+  }
+}
+
+export default connect(null, mapDispatchToProps)(modalCart);
