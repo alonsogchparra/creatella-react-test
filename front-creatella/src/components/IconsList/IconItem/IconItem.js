@@ -6,7 +6,6 @@ import * as actions from '../../../store/actions';
 const iconItem = ({ icon, currency, M, onAddIconsCart }) => {
 
  const addCartHandler = () => {
-    console.log('Added to Cart');
     M.toast({html:`Face: ${icon.face} added Cart`});
     onAddIconsCart(icon);
   }

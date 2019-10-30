@@ -4,12 +4,10 @@ import axios from 'axios';
 export const getIcons = () => {
   return dispatch => {
     setTimeout(() => {
-      console.log('Loading!!!');
       dispatch(isLoading());
       setTimeout(() => {
         axios.get('http://localhost:3000/products')
         .then(res => {
-          console.log('Fetching Icons', res.data);
           dispatch(fetchIcons(res.data));
         })
       }, 2000);
