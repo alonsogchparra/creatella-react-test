@@ -113,3 +113,16 @@ export const addIcons = (icons) => {
     icons
   }
 }
+
+export const removeIcon = (id) => {
+  return {
+    type: actionTypes.REMOVE_ICON,
+    id
+  }
+}
+
+export const removeAllIcons = () => {
+  return {
+    type: actionTypes.REMOVE_ALL_ICONS
+  }
+}
