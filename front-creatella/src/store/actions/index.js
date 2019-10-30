@@ -6,5 +6,7 @@ export {
   getSortBySize,
   getSortByDate,
   getSortById,
-  addIcons
+  addIcons,
+  removeIcon,
+  removeAllIcons
 } from './icons'
