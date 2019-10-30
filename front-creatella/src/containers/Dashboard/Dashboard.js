@@ -49,9 +49,10 @@ class Dashboard extends Component {
       idSelected,
       dateSelected,
       isLoading,
-      iconsAdded
+      iconsAdded,
+      total
      } = this.props;
-     console.log('IconsAdded', iconsAdded );
+
     return (
       <div>
 
@@ -71,7 +72,7 @@ class Dashboard extends Component {
         </div>
 
         <ShoppingButton />
-        <ModalCart icons={iconsAdded} />
+        <ModalCart icons={iconsAdded} total={total} />
 
       </div>
     )
@@ -91,6 +92,7 @@ const mapStateToProps = state => {
     idSelected: state.icons.idSelected,
     isLoading: state.icons.isLoading,
     iconsAdded: state.icons.iconsAdded,
+    total: state.icons.total
   }
 }
 
