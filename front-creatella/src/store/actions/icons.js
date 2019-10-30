@@ -4,12 +4,10 @@ import axios from 'axios';
 export const getIcons = () => {
   return dispatch => {
     setTimeout(() => {
-      console.log('Loading!!!');
       dispatch(isLoading());
       setTimeout(() => {
         axios.get('http://localhost:3000/products')
         .then(res => {
-          console.log('Fetching Icons', res.data);
           dispatch(fetchIcons(res.data));
         })
       }, 2000);
@@ -111,5 +109,18 @@ export const addIcons = (icons) => {
   return {
     type: actionTypes.ADDING_ICONS,
     icons
+  }
+}
+
+export const removeIcon = (id) => {
+  return {
+    type: actionTypes.REMOVE_ICON,
+    id
+  }
+}
+
+export const removeAllIcons = () => {
+  return {
+    type: actionTypes.REMOVE_ALL_ICONS
   }
 }

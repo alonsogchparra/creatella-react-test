@@ -15,6 +15,8 @@ Would you like to run the app on another port instead? (Y/n)
 ```
 And this case press the button **Y** that way your backend project will run on **port:3000** and the frontend will do it on **port:3001**. This is because we need frontend and backend work together. Backend will handle the ascii faces and advertisment and frontend will get the info from backend.
 
+The most update branchs on this project are **master** and **develop**. Be on these branchs if you want to check the entire project. Feel free to check the others branchs I will let them open if you want to search something.
+
 
 Products Grid
 ====

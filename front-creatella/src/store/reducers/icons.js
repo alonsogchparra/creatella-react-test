@@ -12,6 +12,7 @@ const initState = {
   idSelected: false,
   isLoading: true,
   iconsAdded: [],
+  total:0,
 };
 
 const reducer = (state = initState, action) => {
@@ -73,22 +74,33 @@ const reducer = (state = initState, action) => {
         isLoading: action.isLoading
       }
 
-    case actionTypes.LOADING_ICONS: {
+    case actionTypes.LOADING_ICONS:
       return {
         ...state,
         isLoading: action.isLoading
       }
-    }
 
-    case actionTypes.ADDING_ICONS: {
+    case actionTypes.ADDING_ICONS:
       return {
         ...state,
         iconsAdded: state.iconsAdded.concat(action.icons)
           .filter((icon, index, self) => index === self.findIndex((t) => (
           t.id === icon.id && t.face === icon.face
-        )))
+        ))),
+        total: Object.values(state.iconsAdded.map(icon => parseInt(icon.price))).reduce((a, b) => a + b, 0)
       }
-    }
+
+    case actionTypes.REMOVE_ICON:
+      return {
+        ...state,
+        iconsAdded: state.iconsAdded.filter(icon => icon.id !== action.id)
+      }
+
+    case actionTypes.REMOVE_ALL_ICONS:
+      return {
+        ...state,
+        iconsAdded: []
+      }
 
     default:
       return state;
